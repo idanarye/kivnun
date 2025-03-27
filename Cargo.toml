@@ -15,7 +15,7 @@ edition = "2021"
 
 [workspace.dependencies]
 dioxus = { version = "0.6.3" }
-axum = { version = "0.7.9" }
+axum = { version = "0.7.9", features = ["ws"] }
 
 frontend = { path = "frontend" }
 backend = { path = "backend" }
@@ -29,6 +29,7 @@ dioxus-cli-config = { version = "0.6.3", optional = true }
 frontend = { workspace = true }
 backend = { workspace = true }
 tokio = { version = "1.44.1", features = ["full"], optional = true }
+tracing = "0.1.41"
 
 [features]
 default = []
