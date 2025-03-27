@@ -6,3 +6,10 @@ edition = "2024"
 
 [dependencies]
 dioxus = { workspace = true, features = ["fullstack"] }
+axum = { workspace = true, optional = true }
+tracing = "0.1.41"
+
+[features]
+server = [
+    "axum",
+]
