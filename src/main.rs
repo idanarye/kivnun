@@ -12,11 +12,12 @@ fn main() {
             .unwrap()
             .block_on(async move {
                 use dioxus::prelude::DioxusRouterExt;
-                let axum_app = axum::Router::<()>::new()
+                let axum_app = axum::Router::new()
                     .route(
                         "/ws",
                         axum::routing::any(backend::wsjrpc::upgrade_websocket),
                     )
+                    .with_state(backend::MainActor::spawn())
                     .serve_dioxus_application(ServeConfig::new().unwrap(), frontend::App);
 
                 let addr = dioxus::cli_config::fullstack_address_or_localhost();
